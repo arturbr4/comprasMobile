@@ -2,11 +2,11 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="br.com.mercados.compras.activities.IncluirProdutoActivity">
+    tools:context="br.com.mercados.compras.activities.IncluirComprasActivity">
 
 
     <item
-        android:id="@+id/menu_incluir_produto_salvar"
+        android:id="@+id/menu_incluir_compra_salvar"
         android:icon="@drawable/ic_confirmar"
         android:title="Ok"
         app:showAsAction="always" />

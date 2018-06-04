@@ -2,24 +2,57 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.com.mercados.compras">
 
+
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
     <application
+        android:name="br.com.mercados.app.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:label="@string/app_name"
         android:theme="@style/AppTheme">
-        <activity android:name=".ListaComprasActivity">
+
+        <activity android:name=".activities.ListaProdutosActivity" android:label="Lista de Produtos">
+        </activity>
+
+        <activity android:name=".activities.IncluirProdutoActivity" android:label="Incluir Novo Produto">
+        </activity>
+
+        <activity android:name=".activities.IncluirComprasActivity">
+        </activity>
+
+        <activity android:name=".activities.ListaComprasActivity">
+        </activity>
+
+        <activity android:name=".activities.BarCodeReaderActivity">
+        </activity>
+
+        <activity android:name=".activities.MostrarPrecoActivity" >
+
+        </activity>
+
+        <activity android:name=".activities.InicialActivity" android:theme="@style/noTopBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".IncluirProdutoActivity">
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="br.com.mercados"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"/>
+        </provider>
 
-        </activity>
     </application>
 
 </manifest>

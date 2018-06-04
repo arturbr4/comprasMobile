@@ -1,22 +1,39 @@
 package br.com.mercados.compras.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
+import java.sql.Blob;
 import java.sql.Timestamp;
 import java.util.Calendar;
+import java.util.List;
 
 import br.com.mercados.compras.util.Utils;
 
-public class Produto {
+public class Produto implements Serializable{
+
+    public static final String TABLE = "PRODUTOS";
+    // Labels Table Columns names
+    public static final String COLUMN_Id = "ID";
+    public static final String COLUMN_CodigoBarra = "CODIGO_BARRAS";
+    public static final String COLUMN_Nome = "NOME";
+    public static final String COLUMN_Categoria = "CATEGORIA";
+    public static final String COLUMN_Quantidade = "QUANTIDADE";
+    public static final String COLUMN_Unidade = "UNIDADE";
+    public static final String COLUMN_Foto = "CAMINHO_FOTO";
+    public static final String COLUMN_Observacao = "OBSERVACAO";
+
 
     private Long id;
+    private String codigoBarras;
     private String nome;
     private String categoria;
     private Long quantidade;
     private String unidade;
-    private Double preco;
-    private String local;
-    private Calendar data;
+    private String caminhoFoto;
     private String observacao;
+    private List<Compra> compras;
+
+    //TODO quantidade deve ser limitado, drop-down
 
 
     public Long getId() {
@@ -59,25 +76,9 @@ public class Produto {
         this.unidade = unidade;
     }
 
-    public Double getPreco() { return preco; }
+    public String getCaminhoFoto() { return caminhoFoto; }
 
-    public void setPreco(Double preco) {
-        this.preco = preco;
-    }
-
-    public String getLocal() {
-        return local;
-    }
-
-    public void setLocal(String local) {
-        this.local = local;
-    }
-
-    public Calendar getData() {
-        return data;
-    }
-
-    public void setData(Calendar data) { this.data = data; }
+    public void setCaminhoFoto(String caminhoFoto) { this.caminhoFoto = caminhoFoto; }
 
     public String getObservacao() {
         return observacao;
@@ -87,8 +88,16 @@ public class Produto {
         this.observacao = observacao;
     }
 
+    public String getCodigoBarras() { return codigoBarras; }
+
+    public void setCodigoBarras(String codigoBarras) { this.codigoBarras = codigoBarras; }
+
+    public List<Compra> getCompras() { return compras; }
+
+    public void setCompras(List<Compra> compras) { this.compras = compras; }
+
     @Override
     public String toString() {
-        return this.nome + " - " + Utils.convertCalendarToStringWithPattern(this.data,"dd/MM/yyyy");
+        return this.nome;
     }
 }

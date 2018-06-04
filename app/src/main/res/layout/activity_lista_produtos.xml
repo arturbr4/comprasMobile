@@ -4,10 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ListView android:layout_width="match_parent" android:layout_height="match_parent" android:id="@+id/lista_compras_compras" />
+    <EditText
+        android:id="@+id/lista_produtos_filtrar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:hint="Filtrar lista"/>
 
     <Button
-        android:id="@+id/lista_compras_incluir_compra"
+        android:id="@+id/lista_produtos_incluir_produto"
         android:layout_width="56dp"
         android:layout_height="56dp"
         android:text="+"
@@ -20,5 +24,12 @@
         android:elevation="20dp"
         android:background="@drawable/fundo"
         />
+
+    <ListView
+        android:id="@+id/lista_produtos_produtos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/lista_produtos_filtrar" />
 
 </RelativeLayout>

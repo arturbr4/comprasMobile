@@ -1,3 +1,30 @@
 <resources>
+
+
     <string name="app_name">Compras</string>
+    <string name="nomeListaProdutos">Lista Produtos</string>
+    <string name="verificarCodigoDeBarras">Verificar preco do produto</string>
+    <string name="grafico">Grafico</string>
+    <string name="explicacaoGrafico">Visualizar graficos de precos</string>
+    <string name="compras">Compras</string>
+    <string name="explicacaoCompras">Iniciar compras</string>
+    <string name="produto">Produtos</string>
+    <string name="explicacaoProduto">Lista de produtos</string>
+    <string name="ultimoValor">Ultimo Valor</string>
+    <string name="menorValor">Menor Valor</string>
+    <string name="novoPreco">Preco</string>
+
+
+
+    <!-- Produto -->
+
+    <string name="codigoDeBarras">Codigo de Barras</string>
+    <string name="categoria">Categoria</string>
+    <string name="quantidade">Quantidade</string>
+    <string name="marca">Marca</string>
+
+    <!-- Mensagens Erros -->
+
+    <string name="campoVazio">Necessario preencher o campo acima</string>
+    <string name="valorInvalido">Valor invalido</string>
 </resources>
