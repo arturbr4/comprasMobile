@@ -26,6 +26,7 @@ public class ListaProdutosActivity extends AppCompatActivity {
 
     private ListView listaProdutos;
     private ProdutoAdapter adapter;
+    private TextWatcher textWatcherImplemented;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,23 +56,12 @@ public class ListaProdutosActivity extends AppCompatActivity {
             }
         });
 
+        if(textWatcherImplemented == null)
+            textWatcherImplemented = new TextWatcherImplemented();
+
+
         EditText filtrarProdutos = findViewById(R.id.lista_produtos_filtrar);
-        filtrarProdutos.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                //ListaProdutosActivity.this.adapter.
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
+        filtrarProdutos.addTextChangedListener(textWatcherImplemented);
         
         registerForContextMenu(listaProdutos);
     }
@@ -109,5 +99,22 @@ public class ListaProdutosActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
+
+    private class TextWatcherImplemented implements TextWatcher {
+
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            ListaProdutosActivity.this.adapter.getFilter().filter(s);
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+        }
     }
 }

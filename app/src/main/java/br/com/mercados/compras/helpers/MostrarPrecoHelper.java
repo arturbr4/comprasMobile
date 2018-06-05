@@ -66,7 +66,7 @@ public class MostrarPrecoHelper {
 
     private Compra retornaCompraMenorPreco(Produto produto) {
         
-        Compra compraComMenorValor = null;
+        Compra compraComMenorValor = new Compra();
 
         for(Compra compraAComparar : produto.getCompras()) {
             if (compraComMenorValor == null || (compraAComparar.getPreco() < compraComMenorValor.getPreco()))
@@ -76,7 +76,7 @@ public class MostrarPrecoHelper {
     }
 
     private Compra retornaCompraUltimoPreco(Produto produto) {
-        Compra compraComDataMaisRecente = null;
+        Compra compraComDataMaisRecente = new Compra();
 
         for(Compra compraAComparar : produto.getCompras()) {
             if (compraComDataMaisRecente == null || (compraComDataMaisRecente.getData().compareTo(compraAComparar.getData()) < 0))

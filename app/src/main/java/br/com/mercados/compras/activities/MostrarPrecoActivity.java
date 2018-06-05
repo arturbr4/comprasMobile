@@ -28,6 +28,7 @@ public class MostrarPrecoActivity extends AppCompatActivity {
     private MostrarPrecoHelper mostrarPrecoHelper;
     private ProdutoDAO produtoDAO;
     private CompraDAO comprasDao;
+    private Produto produto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,28 +46,28 @@ public class MostrarPrecoActivity extends AppCompatActivity {
         String codigoDeBarras = intent.getStringExtra("codigoDeBarra");
 
         // TODO Alterar para ficar de forma mais legivel, talvez incluir o metodo incluirCompras no Objeto Produto
+        //TODO Validar codigo de Barras
         List<Produto> produtos = produtoDAO.buscarProdutoPorCodigoDeBarra(codigoDeBarras);
-        produtos = comprasDao.incluirComprasEmProduto(produtos);
-        final Produto produto = produtos.get(0);
-
-        Button botaoIncluirNovoPreco = findViewById(R.id.mostrar_preco_incluirNovoPreco);
-        botaoIncluirNovoPreco.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent irParaIncluirCompras = new Intent(MostrarPrecoActivity.this,IncluirComprasActivity.class);
-                irParaIncluirCompras.putExtra("codigoProduto",produto.getId());
-                startActivity(irParaIncluirCompras);
-                Toast.makeText(MostrarPrecoActivity.this,"CRIAR PAGINA PARA CADASTRAR NOVO PRECO",Toast.LENGTH_SHORT).show();
-            }
-        });
 
         if(!produtos.isEmpty()){
+            produtos = comprasDao.incluirComprasEmProduto(produtos);
+            produto = produtos.get(0);
             mostrarPrecoHelper.preencherFormularioProduto(produto);
+
+            Button botaoIncluirNovoPreco = findViewById(R.id.mostrar_preco_incluirNovoPreco);
+            botaoIncluirNovoPreco.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent irParaIncluirCompras = new Intent(MostrarPrecoActivity.this,IncluirComprasActivity.class);
+                    irParaIncluirCompras.putExtra("codigoProduto",produto.getId());
+                    startActivity(irParaIncluirCompras);
+                }
+            });
+
         }else{
             Intent moverParaIncluirProduto = new Intent(MostrarPrecoActivity.this,IncluirProdutoActivity.class);
             moverParaIncluirProduto.putExtra("codigoDeBarra",codigoDeBarras);
             startActivity(moverParaIncluirProduto);
-            Toast.makeText(this,"Produto ainda nao cadastrado",Toast.LENGTH_LONG).show();
             finish();
         }
     }

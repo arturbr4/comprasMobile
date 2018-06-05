@@ -118,6 +118,5 @@ public class IncluirProdutoActivity extends AppCompatActivity {
             Toast.makeText(IncluirProdutoActivity.this, produto.getNome() + " Salvo", Toast.LENGTH_SHORT).show();
             finish();
         }
-        Toast.makeText(IncluirProdutoActivity.this, "Formulario nao foi corretamente preenchido", Toast.LENGTH_SHORT).show();
     }
 }
